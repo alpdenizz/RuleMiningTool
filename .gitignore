@@ -1,0 +1,13 @@
+bin/
+*.xes
+*.mxml
+*.txt
+*.dot
+*.tmp
+examples/
+dist/
+others/
+/zlib1.dll
+/RunningExample.decl
+/temp.xml
+/test6.decl

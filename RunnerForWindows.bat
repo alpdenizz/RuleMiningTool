@@ -1,0 +1,49 @@
+@echo off
+
+set CLASSPATH_OLD=%CLASSPATH%
+set CLASSPATH=%CLASSPATH%;.\RuM.jar
+set CLASSPATH=%CLASSPATH%;.\lib\automaton.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-cli-1.4.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-cli-1.4-javadoc.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-cli-1.4-sources.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-cli-1.4-tests.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-cli-1.4-test-sources.jar
+set CLASSPATH=%CLASSPATH%;.\lib\commons-lang3-3.4.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DataAwareDeclareReplayerMini.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DataAwareReplayerLGPL-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DataExpression-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DataPetriNetsLGPL-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DeclareAnalyzerMini.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DeclareCheckerMini.jar
+set CLASSPATH=%CLASSPATH%;.\lib\DeclareMinerVisualizer-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\gson-2.8.2.jar
+set CLASSPATH=%CLASSPATH%;.\lib\guava-16.0.1.jar
+set CLASSPATH=%CLASSPATH%;.\lib\javailp-1.2a.jar
+set CLASSPATH=%CLASSPATH%;.\lib\jeval-0.9.4.jar
+set CLASSPATH=%CLASSPATH%;.\lib\jfreechart-1.0.13.jar
+set CLASSPATH=%CLASSPATH%;.\lib\jgraph.jar
+set CLASSPATH=%CLASSPATH%;.\lib\jgrapht-jdk1.6.jar
+set CLASSPATH=%CLASSPATH%;.\lib\log4j-1.2.17.jar
+set CLASSPATH=%CLASSPATH%;.\lib\Log-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\LpSolve-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\ltl2aut.jar
+set CLASSPATH=%CLASSPATH%;.\lib\LTL2Automaton-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\MINERful.jar
+set CLASSPATH=%CLASSPATH%;.\lib\OpenXES.jar
+set CLASSPATH=%CLASSPATH%;.\lib\ProM-Contexts.jar
+set CLASSPATH=%CLASSPATH%;.\lib\ProM-Framework.jar
+set CLASSPATH=%CLASSPATH%;.\lib\ProM-Models-latest.jar
+set CLASSPATH=%CLASSPATH%;.\lib\resources.jar
+set CLASSPATH=%CLASSPATH%;.\lib\slickerbox1.0rc1.jar
+set CLASSPATH=%CLASSPATH%;.\lib\Spex.jar
+set CLASSPATH=%CLASSPATH%;.\lib\TheMiner.jar
+set CLASSPATH=%CLASSPATH%;.\lib\Uitopia-0.6-20181030.jar
+set CLASSPATH=%CLASSPATH%;.\lib\visfx-1.0-SNAPSHOT.jar
+set CLASSPATH=%CLASSPATH%;.\lib\Widgets.jar
+set CLASSPATH=%CLASSPATH%;.\lib\alloy4.2.jar
+set CLASSPATH=%CLASSPATH%;.\lib\AlloyLogGenerator.jar
+
+start java -classpath "%CLASSPATH%" theFirst.RuM
+
+set CLASSPATH=%CLASSPATH_OLD%
+set CLASSPATH_OLD=
