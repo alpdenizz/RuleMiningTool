@@ -603,6 +603,7 @@ public class LogGenController extends GridPane {
 	}
 	
 	public String generateWithAlloyLogGen() {
+		System.out.println("Preparing input model...");
 		String tmp_file = replaceTDotWithBDot(mpFile);
 		if(tmp_file != null && !tmp_file.isEmpty()) {
 			StringBuilder builder = new StringBuilder("java -jar AlloyLogGenerator2.jar ");
@@ -628,7 +629,7 @@ public class LogGenController extends GridPane {
 			boolean isOk = false;
 			StringBuilder errorBuilder = new StringBuilder();
             try {
-            	
+            	System.out.println("Starting the generation...");
             	AlloyRunner.generateLog(
             			minTraceLength.getText(), 
             			maxTraceLength.getText(), 
@@ -644,18 +645,22 @@ public class LogGenController extends GridPane {
         		Process p = pb.start();
         		isOk = isSuccessful(p.getInputStream(),errorBuilder);*/
 			} catch (Exception e) {
+				System.out.println("Log not generated!");
 				// TODO Auto-generated catch block
 				return "Error: Log is not generated with AlloyLogGenerator";
 			}
             if(isOk) {
+            	System.out.println("Task returned a path");
             	//System.out.println("Oldu be!");
             	return modelName.getText();
             }
             else {
+            	System.out.println("Log not generated!");
             	//System.out.println("Hata var!");
             	return "Error: Log is not generated with AlloyLogGenerator";
             }
 		}
+		System.out.println("Log not generated!");
 		return "Error";
 	}
 	

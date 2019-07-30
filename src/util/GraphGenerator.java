@@ -958,6 +958,7 @@ public class GraphGenerator {
 	
 	public static Browser browserify(Map<Integer,String> activitiesMap, Map<Integer,Double> actSuppMap, Map<Integer,String> templatesMap, Map<Integer,List<String>> constraintParametersMap, Map<Integer,Double> constraintSuppMap, Slider zoom, String view, String supportFor) {
 		if(view.equals("Declare")) {
+			System.out.println("Preparing Declare view...");
 			Map<Integer,Boolean> isDrawnMap = new HashMap<Integer,Boolean>();
 			Map<String,String> nodesMap = new HashMap<String,String>();
 			constraintParametersMap.keySet().forEach(k -> isDrawnMap.put(k, false));
@@ -1010,6 +1011,7 @@ public class GraphGenerator {
 				sb.append(s);
 			}
 			sb.append("}");
+			System.out.println("Dot string is ready...");
 			Browser browser = new Browser(Screen.getPrimary().getVisualBounds().getHeight()*0.79,Screen.getPrimary().getVisualBounds().getWidth() * 0.75,sb.toString(),zoom);
 			browser.setActivitiesMap(activitiesMap);
 			browser.setActSuppMap(actSuppMap);

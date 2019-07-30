@@ -1195,6 +1195,7 @@ public class TabbedMainViewController extends TabPane {
 	
 	@FXML
 	public void discover() {
+		System.out.println("Discover button clicked...");
 		zoomSlider.setVisible(false);
 		zoomText.setVisible(false);
 		zoomValue.setVisible(false);
@@ -1255,6 +1256,7 @@ public class TabbedMainViewController extends TabPane {
 			fileChoice.setDisable(true);
 			discoveryChoice.setDisable(true);
 			discover.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (event) -> {
+				System.out.println("The task has succeeded...");
 				DiscoveryResultController drc = obtainDiscoveryResultController(discover.getValue(),control);
 				this.previousWorks.put(chosen, drc);
 				//cancelButton.setVisible(false);
@@ -1279,8 +1281,10 @@ public class TabbedMainViewController extends TabPane {
 				dmLabel.setVisible(true);
 				fileChoice.setDisable(false);
 				discoveryChoice.setDisable(false);
+				System.out.println("Result has inserted...");
 
 			});
+			System.out.println("Discover task has started...");
 			service.execute(discover);
 		}
 		else if(discovery.equals("Minerful")) {
@@ -1402,6 +1406,7 @@ public class TabbedMainViewController extends TabPane {
 		drc.setView("Declare");
 		drc.setFc(fc);
 		//drc.getFilterPane().getChildren().add(new Label("Hello World"));
+		System.out.println("Preparing output representation...");
 		drc.setBrowser(controller.getBrowserFrom(output,actKeysSet,finalKeys,"Declare"));
 		//drc.setBrowser(b);
 		return drc;
@@ -1862,6 +1867,7 @@ public class TabbedMainViewController extends TabPane {
 	
 	@FXML
 	public void generateLog() {
+		System.out.println("Log generate button clicked...");
 		String file = mpDeclareChoice.getSelectionModel().getSelectedItem();
 		String gen = generatorChoice.getSelectionModel().getSelectedItem();
 		if(file == null) {
@@ -1927,6 +1933,7 @@ public class TabbedMainViewController extends TabPane {
 			}
 			
 		}
+		System.out.println("All templates are valid");
 		String warning = temporalWarning.toString();
 		if(!warning.isEmpty()) showWarning(warning);
 		lgc.setConstraintList(constraintList);
@@ -1949,10 +1956,12 @@ public class TabbedMainViewController extends TabPane {
 		mpDeclareChoice.setDisable(true);
 		generatorChoice.setDisable(true);
 		task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, e -> {
+			System.out.println("LogGen task has finished");
 			actionPane4.getChildren().remove(pc);
 			actionPane4.getChildren().add(lgc);
 			String message = task.getValue();
 			if(message.startsWith("Error")) {
+				System.out.println("Log not generated");
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setContentText(message);
 				alert.showAndWait();
@@ -1963,10 +1972,12 @@ public class TabbedMainViewController extends TabPane {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setContentText("Log is generated!");
 				alert.showAndWait();
+				System.out.println("Log generated!");
 			}
 			mpDeclareChoice.setDisable(false);
 			generatorChoice.setDisable(false);
 		});
+		System.out.println("LogGen task started...");
 		service.execute(task);
 	}
 	
