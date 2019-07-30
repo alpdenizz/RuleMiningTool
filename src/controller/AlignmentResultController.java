@@ -135,6 +135,7 @@ public class AlignmentResultController extends GridPane{
 				return caseName1.compareTo(caseName2);
 			});
 			traceList.getSelectionModel().selectedItemProperty().addListener((ov,oldV,newV) -> {
+				if(newV == null) return;
 				prepareValues(map.get(newV));
 			});
 			return;
@@ -162,6 +163,7 @@ public class AlignmentResultController extends GridPane{
 				return caseName1.compareTo(caseName2);
 			});
 			traceList.getSelectionModel().selectedItemProperty().addListener((ov,oldV,newV) -> {
+				if(newV == null) return;
 				prepareValues2(map.get(newV));
 			});
 			return;
