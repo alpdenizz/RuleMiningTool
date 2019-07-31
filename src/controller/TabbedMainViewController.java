@@ -1408,6 +1408,7 @@ public class TabbedMainViewController extends TabPane {
 		//drc.getFilterPane().getChildren().add(new Label("Hello World"));
 		System.out.println("Preparing output representation...");
 		drc.setBrowser(controller.getBrowserFrom(output,actKeysSet,finalKeys,"Declare"));
+		System.out.println("Model ready: "+System.currentTimeMillis());
 		//drc.setBrowser(b);
 		return drc;
 	}

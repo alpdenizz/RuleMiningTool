@@ -125,6 +125,8 @@ public class Browser extends Pane {
     public Browser(double h, double w, String dotGraph, Slider zoom) {
     	setZoomSlider(zoom);
     	getStyleClass().add("browser");
+    	System.out.println("Loading initial page...");
+    	System.out.println("Before millis: "+System.currentTimeMillis());
         webEngine.load((getClass().getClassLoader().getResource("test.html")).toString());
         this.setPrefHeight(h);
         this.setPrefWidth(w);
@@ -181,7 +183,10 @@ public class Browser extends Pane {
     	String script = "setModel('" + dg + "')";
         webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == Worker.State.SUCCEEDED) {
+            	System.out.println("Page loaded...");
+            	System.out.println("After millis: "+System.currentTimeMillis());
             	webEngine.executeScript(script);
+            	System.out.println("After executing millis: "+System.currentTimeMillis());
             }
             else System.out.println("It is not loaded successfully!");
         });
