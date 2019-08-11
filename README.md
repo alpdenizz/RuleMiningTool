@@ -38,5 +38,11 @@ You should be able to open it as Java Project and run from `src/theFirst/RuM.jav
 * **OS:** Ubuntu 18.04.3 LTS  
 * **Java:** Java(TM) SE Runtime Environment (build 1.8.0_221-b11)  
 
+3) Macbook Pro Early 2015  
+* **CPU:** 2.7 GHz Intel Core i5  
+* **RAM:** 8GB DDR3 1867MHz
+* **OS:** OS X Yosemite 10.10.5  
+* **Java:** Java(TM) SE Runtime Environment (build 1.8.0_211-b12)
+
 ### Manual
 You can find a user manual in USER MANUAL.pdf
