@@ -36,4 +36,7 @@ You should be able to open it as Java Project and run from `src/theFirst/RuM.jav
 2) Oracle VM VirtualBox Version 6.0.10 r132072 installed on (1)
 * **RAM:** 4GB  
 * **OS:** Ubuntu 18.04.3 LTS  
-* **Java:** Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+* **Java:** Java(TM) SE Runtime Environment (build 1.8.0_221-b11)  
+
+### Manual
+You can find a user manual in [User Manual](User Manual.pdf)
