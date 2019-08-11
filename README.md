@@ -39,4 +39,4 @@ You should be able to open it as Java Project and run from `src/theFirst/RuM.jav
 * **Java:** Java(TM) SE Runtime Environment (build 1.8.0_221-b11)  
 
 ### Manual
-You can find a user manual in [User Manual](User Manual.pdf)
+You can find a user manual in [User Manual](USER MANUAL.pdf)
