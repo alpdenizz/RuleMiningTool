@@ -185,6 +185,7 @@ public class ConfigurationController extends GridPane {
 	public DeclareMinerOutput getDiscoveryResult() {
 		//this.viewChoice = viewChoice;
 		//String view = this.viewChoice.getSelectionModel().getSelectedItem();
+		System.out.println("Discovery start millis: "+System.currentTimeMillis());
 		Configuration configuration = new Configuration();
 		XLog log = null;
 		try {

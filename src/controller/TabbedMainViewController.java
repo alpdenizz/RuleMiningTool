@@ -682,6 +682,7 @@ public class TabbedMainViewController extends TabPane {
 				logFileChoice.setDisable(false);
 				declareModelChoice.setDisable(false);
 				methodChoice.setDisable(false);
+				System.out.println("Conformance checking ends millis: "+System.currentTimeMillis());
 			});
 			service.execute(task);
 			return;
@@ -751,6 +752,7 @@ public class TabbedMainViewController extends TabPane {
 				logFileChoice.setDisable(false);
 				declareModelChoice.setDisable(false);
 				methodChoice.setDisable(false);
+				System.out.println("Conformance checking ends millis: "+System.currentTimeMillis());
 			});
 			service.execute(task);
 			return;
@@ -824,6 +826,7 @@ public class TabbedMainViewController extends TabPane {
 				logFileChoice.setDisable(false);
 				declareModelChoice.setDisable(false);
 				methodChoice.setDisable(false);
+				System.out.println("Conformance checking ends millis: "+System.currentTimeMillis());
 			});
 			service.execute(task);
 			return;
@@ -1282,7 +1285,7 @@ public class TabbedMainViewController extends TabPane {
 				fileChoice.setDisable(false);
 				discoveryChoice.setDisable(false);
 				System.out.println("Result has inserted...");
-
+				System.out.println("Discovery ends millis: "+System.currentTimeMillis());
 			});
 			System.out.println("Discover task has started...");
 			service.execute(discover);
@@ -1353,6 +1356,7 @@ public class TabbedMainViewController extends TabPane {
 				dmLabel.setVisible(true);
 				fileChoice.setDisable(false);
 				discoveryChoice.setDisable(false);
+				System.out.println("Discovery ends millis: "+System.currentTimeMillis());
 			});
 			service.execute(discover);
 		}
@@ -1974,6 +1978,7 @@ public class TabbedMainViewController extends TabPane {
 				alert.setContentText("Log is generated!");
 				alert.showAndWait();
 				System.out.println("Log generated!");
+				System.out.println("Log gen ends millis: "+System.currentTimeMillis());
 			}
 			mpDeclareChoice.setDisable(false);
 			generatorChoice.setDisable(false);

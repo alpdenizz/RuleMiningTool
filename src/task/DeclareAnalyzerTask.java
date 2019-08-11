@@ -19,6 +19,7 @@ public class DeclareAnalyzerTask extends Task<AnalysisResult>{
 	@Override
 	protected AnalysisResult call() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("Conformance checking starts millis: "+System.currentTimeMillis());
 		return Tester.run(logFile, modelFile);
 	}
 

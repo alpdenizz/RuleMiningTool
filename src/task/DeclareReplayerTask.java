@@ -28,6 +28,7 @@ public class DeclareReplayerTask extends Task<ResultReplayDeclare> {
 	@Override
 	protected ResultReplayDeclare call() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("Conformance checking starts millis: "+System.currentTimeMillis());
 		return Replayer.run(logFile, modelFile, mapping, lamc);
 	}
 

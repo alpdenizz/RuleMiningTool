@@ -30,6 +30,7 @@ public class DataAwareDeclareReplayerTask extends Task<AlignmentAnalysisResult> 
 	@Override
 	protected AlignmentAnalysisResult call() throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("Conformance checking starts millis: "+System.currentTimeMillis());
 		return Runner.run(logFile, modelFile, mapping, lamc, lvmc);
 	}
 

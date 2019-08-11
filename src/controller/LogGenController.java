@@ -665,6 +665,7 @@ public class LogGenController extends GridPane {
 	}
 	
 	public String generateLog(String choice) {
+		System.out.println("Log gen starts millis: "+System.currentTimeMillis());
 		//String choice = modelGeneratorChoice.getSelectionModel().getSelectedItem();
 		if(choice == null) {
 			return "A generator must be selected";

@@ -282,6 +282,7 @@ public class ConfigurationMinerFulController extends GridPane {
 	}
 	
 	public MinerfulResult getDiscoveryResult() {
+		System.out.println("Discovery start millis: "+System.currentTimeMillis());
 		InputLogCmdParameters inputParams =
 				new InputLogCmdParameters();
 		MinerFulCmdParameters minerFulParams =
