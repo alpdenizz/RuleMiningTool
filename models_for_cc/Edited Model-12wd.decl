@@ -1,0 +1,30 @@
+activity Activity1
+bind Activity1: Type, Number
+activity Activity2
+bind Activity2: Type, Number
+activity Activity3
+bind Activity3: Type, Number
+activity Activity4
+bind Activity4: Type, Number
+activity Activity5
+bind Activity5: Type, Number
+activity Activity6
+bind Activity6: Type, Number
+activity Activity7
+bind Activity7: Type, Number
+activity Activity8
+bind Activity8: Type, Number
+activity Activity9
+bind Activity9: Type, Number
+activity Activity10
+bind Activity10: Type, Number
+activity Activity11
+bind Activity11: Type, Number
+activity Activity12
+bind Activity12: Type, Number
+Type: T1, T2, T3, T4, T5, T6
+Number: integer between 1 and 100
+Response[Activity1, Activity2] |A.Number > 25 | |
+Response[Activity3, Activity4] |A.Number > 50 | |
+Response[Activity5, Activity6] |A.Number > 75 | |
+Response[Activity7, Activity8] |A.Number > 90 | |
