@@ -1,0 +1,30 @@
+activity Activity1
+bind Activity1: Type, Number
+activity Activity2
+bind Activity2: Type, Number
+activity Activity3
+bind Activity3: Type, Number
+activity Activity4
+bind Activity4: Type, Number
+activity Activity5
+bind Activity5: Type, Number
+activity Activity6
+bind Activity6: Type, Number
+activity Activity7
+bind Activity7: Type, Number
+activity Activity8
+bind Activity8: Type, Number
+Type: T1, T2, T3, T4
+Number: integer between 1 and 100
+Existence[Activity1] | |
+Existence[Activity2] | |
+Existence[Activity3] | |
+Existence[Activity4] | |
+Existence[Activity5] | |
+Existence[Activity6] | |
+Existence[Activity7] | |
+Existence[Activity8] | |
+Response[Activity1, Activity8] |A.Type is T1 |different Type and T.Number < 25 |
+Response[Activity2, Activity7] |A.Type is T2 |different Type and T.Number < 50 |
+Response[Activity3, Activity6] |A.Type is T3 |different Type and T.Number < 75 |
+Response[Activity4, Activity5] |A.Type is T4 |different Type and T.Number < 100 |

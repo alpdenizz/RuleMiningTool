@@ -1,0 +1,44 @@
+activity Activity1
+bind Activity1: Type, Number
+activity Activity2
+bind Activity2: Type, Number
+activity Activity3
+bind Activity3: Type, Number
+activity Activity4
+bind Activity4: Type, Number
+activity Activity5
+bind Activity5: Type, Number
+activity Activity6
+bind Activity6: Type, Number
+activity Activity7
+bind Activity7: Type, Number
+activity Activity8
+bind Activity8: Type, Number
+activity Activity9
+bind Activity9: Type, Number
+activity Activity10
+bind Activity10: Type, Number
+activity Activity11
+bind Activity11: Type, Number
+activity Activity12
+bind Activity12: Type, Number
+Type: T1, T2, T3, T4, T5, T6
+Number: integer between 1 and 100
+Existence[Activity1] | |
+Existence[Activity2] | |
+Existence[Activity3] | |
+Existence[Activity4] | |
+Existence[Activity5] | |
+Existence[Activity6] | |
+Existence[Activity7] | |
+Existence[Activity8] | |
+Existence[Activity9] | |
+Existence[Activity10] | |
+Existence[Activity11] | |
+Existence[Activity12] | |
+Response[Activity1, Activity12] |A.Type is T1 |different Type and T.Number < 16 |
+Response[Activity2, Activity11] |A.Type is T2 |different Type and T.Number < 32 |
+Response[Activity3, Activity10] |A.Type is T3 |different Type and T.Number < 48 |
+Response[Activity4, Activity9] |A.Type is T4 |different Type and T.Number < 64 |
+Response[Activity5, Activity8] |A.Type is T5 |different Type and T.Number < 80 |
+Response[Activity6, Activity7] |A.Type is T6 |different Type and T.Number < 96 |

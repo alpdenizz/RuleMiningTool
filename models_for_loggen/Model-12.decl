@@ -1,0 +1,30 @@
+activity Activity1
+activity Activity2
+activity Activity3
+activity Activity4
+activity Activity5
+activity Activity6
+activity Activity7
+activity Activity8
+activity Activity9
+activity Activity10
+activity Activity11
+activity Activity12
+Existence[Activity1] | |
+Existence[Activity2] | |
+Existence[Activity3] | |
+Existence[Activity4] | |
+Existence[Activity5] | |
+Existence[Activity6] | |
+Existence[Activity7] | |
+Existence[Activity8] | |
+Existence[Activity9] | |
+Existence[Activity10] | |
+Existence[Activity11] | |
+Existence[Activity12] | |
+Response[Activity1, Activity12] | | |
+Response[Activity2, Activity11] | | |
+Response[Activity3, Activity10] | | |
+Response[Activity4, Activity9] | | |
+Response[Activity5, Activity8] | | | 
+Response[Activity6, Activity7] | | |

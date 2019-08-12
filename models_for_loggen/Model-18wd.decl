@@ -1,0 +1,65 @@
+activity Activity1
+bind Activity1: Type, Number
+activity Activity2
+bind Activity2: Type, Number
+activity Activity3
+bind Activity3: Type, Number
+activity Activity4
+bind Activity4: Type, Number
+activity Activity5
+bind Activity5: Type, Number
+activity Activity6
+bind Activity6: Type, Number
+activity Activity7
+bind Activity7: Type, Number
+activity Activity8
+bind Activity8: Type, Number
+activity Activity9
+bind Activity9: Type, Number
+activity Activity10
+bind Activity10: Type, Number
+activity Activity11
+bind Activity11: Type, Number
+activity Activity12
+bind Activity12: Type, Number
+activity Activity13
+bind Activity13: Type, Number
+activity Activity14
+bind Activity14: Type, Number
+activity Activity15
+bind Activity15: Type, Number
+activity Activity16
+bind Activity16: Type, Number
+activity Activity17
+bind Activity17: Type, Number
+activity Activity18
+bind Activity18: Type, Number
+Type: T1, T2, T3, T4, T5, T6, T7, T8, T9
+Number: integer between 1 and 100
+Existence[Activity1] | |
+Existence[Activity2] | |
+Existence[Activity3] | |
+Existence[Activity4] | |
+Existence[Activity5] | |
+Existence[Activity6] | |
+Existence[Activity7] | |
+Existence[Activity8] | |
+Existence[Activity9] | |
+Existence[Activity10] | |
+Existence[Activity11] | |
+Existence[Activity12] | |
+Existence[Activity13] | |
+Existence[Activity14] | |
+Existence[Activity15] | |
+Existence[Activity16] | |
+Existence[Activity17] | |
+Existence[Activity18] | |
+Response[Activity1, Activity18] |A.Type is T1 |different Type and T.Number < 11 |
+Response[Activity2, Activity17] |A.Type is T2 |different Type and T.Number < 22 |
+Response[Activity3, Activity16] |A.Type is T3 |different Type and T.Number < 33 |
+Response[Activity4, Activity15] |A.Type is T4 |different Type and T.Number < 44 |
+Response[Activity5, Activity14] |A.Type is T5 |different Type and T.Number < 55 |
+Response[Activity6, Activity13] |A.Type is T6 |different Type and T.Number < 66 |
+Response[Activity7, Activity12] |A.Type is T7 |different Type and T.Number < 77 |
+Response[Activity8, Activity11] |A.Type is T8 |different Type and T.Number < 88 |
+Response[Activity9, Activity10] |A.Type is T9 |different Type and T.Number < 99 |

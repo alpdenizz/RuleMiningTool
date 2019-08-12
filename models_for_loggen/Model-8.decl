@@ -1,0 +1,20 @@
+activity Activity1
+activity Activity2
+activity Activity3
+activity Activity4
+activity Activity5
+activity Activity6
+activity Activity7
+activity Activity8
+Existence[Activity1] | |
+Existence[Activity2] | |
+Existence[Activity3] | |
+Existence[Activity4] | |
+Existence[Activity5] | |
+Existence[Activity6] | |
+Existence[Activity7] | |
+Existence[Activity8] | |
+Response[Activity1, Activity8] | | |
+Response[Activity2, Activity7] | | |
+Response[Activity3, Activity6] | | |
+Response[Activity4, Activity5] | | |
