@@ -15,6 +15,9 @@ OR: Double click or press Enter to `BuildAndRun.bat`
 Open terminal and type `sh RunnerForNotWindows.sh`  
 OR: Open terminal and type `sh BuildAndRun.sh`
 
+**For Windows with monitoring:**
+Double click on BuildAndRunWithMonitor.bat
+
 ## How to build
 **For Eclipse IDE:**  
 You can import it as an Eclipse project and run from `src/theFirst/RuM.java`  
