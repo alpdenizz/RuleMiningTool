@@ -237,5 +237,83 @@
             </GridPane>
          </content>
       </Tab>
+            <Tab text="Monitoring">
+         <content>
+            <GridPane gridLinesVisible="true">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="90.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#openLog" text="Open Log">
+                           <HBox.margin>
+                              <Insets left="5.0" right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ChoiceBox fx:id="logMonitorChoice" prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <Button fx:id="configureButton1" mnemonicParsing="false" onAction="#openMonitorModel" text="Open Declare Model">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ChoiceBox fx:id="modelMonitorChoice" prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <VBox>
+                        	<CheckBox fx:id="conflictCheck" text="Conflict Check">
+                        		<VBox.margin>
+   									<Insets bottom="5.0"/>
+   								</VBox.margin>
+   							</CheckBox>
+                        	<RadioButton fx:id="builtin" text="Use internal log streamer">
+         						<toggleGroup>
+       								<ToggleGroup fx:id="toggleGroup"/>
+   								</toggleGroup>
+   								<VBox.margin>
+   									<Insets bottom="5.0"/>
+   								</VBox.margin>
+   							</RadioButton>
+   							<RadioButton fx:id="external" text="Use external log streamer">
+   								<toggleGroup>
+   					 				<fx:reference source="toggleGroup"/>
+   								</toggleGroup>
+   							</RadioButton>
+   						</VBox>
+   						<VBox>
+   							<Label text="Port number:"/>
+   							<TextField fx:id="portField" />
+   							<HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+   						</VBox>
+                        <Button fx:id="discoverButton1" mnemonicParsing="false" onAction="#runMonitoring" text="Start Monitoring">
+                        	<HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                     	</Button>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <AnchorPane fx:id="actionPane5" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </content>
+      </Tab>
   </tabs>
 </fx:root>

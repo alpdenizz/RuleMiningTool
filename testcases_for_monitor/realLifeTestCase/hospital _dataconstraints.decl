@@ -1,0 +1,88 @@
+activity thorax
+activity vervolgconsult_poliklinisch
+activity aanname_laboratoriumonderzoek
+activity hemoglobine_foto_elektrisch
+activity creatinine
+activity alkalische_fosfatase__kinetisch_
+activity natrium_vlamfotometrisch
+activity kalium_potentiometrisch
+activity vitamine_b12_mbv_chemieluminescentie
+activity sgot_asat_kinetisch
+activity sgpt_alat_kinetisch
+activity melkzuurdehydrogenase_ldh_kinetisch
+activity leukocyten_tellen_elektronisch
+activity trombocyten_tellen_elektronisch
+activity gammaglutamyltranspeptidase
+activity crp_c_reactief_proteine
+activity ordertarief
+activity administratief_tarief___eerste_pol
+activity telefonisch_consult
+activity sediment
+activity bacteriologisch_onderzoek_met_kweek__nie
+activity resistentiebepalingen_5_bepalingen
+activity hepatitis_b_surface_antigeen_confirmatie
+activity urine_onderzoek_kwalitatief
+activity cytologisch_onderzoek__ectocervix__
+activity histologisch_onderzoek___biopten_nno
+activity albumine
+activity bilirubine_geconjugeerd
+activity bilirubine_totaal
+activity glucose
+activity ureum
+activity squamous_cell_carcinoma_mbv_eia
+activity calcium
+activity mri_wervelkolom_thoracaal
+activity mri_wervelkolom_lumbaal
+activity ct_abdomen
+activity bezinkingssnelheid_foto
+activity elektrisch
+
+
+Producer_code: SIOG, SGAL, SGNA, CRLA, CHE2
+group: Medical_Microbiology, Pathology, General_Lab_Clinical_Chemistry
+Section: Section_4
+Specialism_code: integer between 6 and 87
+
+bind administratief_tarief___eerste_pol: group, Section,Producer_code,Specialism_code
+bind bacteriologisch_onderzoek_met_kweek__nie: group,Producer_code,Specialism_code
+bind cytologisch_onderzoek__ectocervix__: group,Producer_code,Specialism_code
+bind histologisch_onderzoek___biopten_nno: group,Producer_code,Specialism_code
+bind aanname_laboratoriumonderzoek: group, Section,Producer_code,Specialism_code
+bind creatinine: group, Section,Producer_code,Specialism_code
+bind alkalische_fosfatase__kinetisch_: group, Section,Producer_code,Specialism_code
+bind natrium_vlamfotometrisch: group, Section,Producer_code,Specialism_code
+bind kalium_potentiometrisch: group, Section,Producer_code,Specialism_code
+bind bilirubine_geconjugeerd: group, Section,Producer_code,Specialism_code
+bind bilirubine_totaal: group, Section,Producer_code,Specialism_code
+bind ureum: group, Section,Producer_code,Specialism_code
+bind glucose: group, Section,Producer_code,Specialism_code
+bind hemoglobine_foto_elektrisch: group, Section,Producer_code,Specialism_code
+bind sgot_asat_kinetisch: group, Section,Producer_code,Specialism_code
+bind sgpt_alat_kinetisch: group, Section,Producer_code,Specialism_code
+bind melkzuurdehydrogenase_ldh_kinetisch: group, Section,Producer_code,Specialism_code
+bind squamous_cell_carcinoma_mbv_eia: group, Section,Producer_code,Specialism_code
+bind calcium: group, Section,Producer_code,Specialism_code
+bind mri_wervelkolom_thoracaal: group, Section,Producer_code,Specialism_code
+bind mri_wervelkolom_lumbaal: group, Section,Producer_code,Specialism_code
+bind ct_abdomen: group, Section,Producer_code,Specialism_code
+bind bezinkingssnelheid_foto: group, Section,Producer_code,Specialism_code
+bind leukocyten_tellen_elektronisch: group, Section,Producer_code,Specialism_code
+bind trombocyten_tellen_elektronisch: group, Section,Producer_code,Specialism_code
+bind gammaglutamyltranspeptidase: group, Section,Producer_code,Specialism_code
+bind crp_c_reactief_proteine: group, Section,Producer_code,Specialism_code
+bind vervolgconsult_poliklinisch: group, Section,Producer_code,Specialism_code
+bind albumine: group, Section, Producer_code,Specialism_code
+bind ordertarief: group, Section, Producer_code,Specialism_code
+bind telefonisch_consult: group, Section, Producer_code,Specialism_code
+
+Absence[bacteriologisch_onderzoek_met_kweek__nie A]| A.group is not Medical_Microbiology|
+NotRespondedExistence[telefonisch_consult A, alkalische_fosfatase__kinetisch_ T]|((A.Producer_code is SGAL ) or ( A.Producer_code is SGNA ))| 
+Absence[aanname_laboratoriumonderzoek A]|(A.Section is Section_4 ) and (A.group is not General_Lab_Clinical_Chemistry) and (A.Specialism_code = 86)
+Response[administratief_tarief___eerste_pol A, albumine T]|( A.Producer_code is SIOG )|
+
+ 
+ 
+
+
+
+

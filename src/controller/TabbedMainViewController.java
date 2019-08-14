@@ -2,8 +2,11 @@ package controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,6 +36,8 @@ import org.processmining.plugins.DeclareConformance.Replayer;
 import org.processmining.plugins.DeclareConformance.ResultReplayDeclare;
 import org.processmining.plugins.dataawaredeclarereplayer.Runner;
 import org.processmining.plugins.dataawaredeclarereplayer.result.AlignmentAnalysisResult;
+import org.deckfour.xes.in.XesXmlParser;
+import org.deckfour.xes.model.XLog;
 import org.processmining.plugins.declareanalyzer.AnalysisResult;
 import org.processmining.plugins.declareanalyzer.Tester;
 import org.processmining.plugins.declareminer.enumtypes.DeclareTemplate;
@@ -49,14 +54,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -79,6 +88,9 @@ import task.LogGenTask;
 import task.MinerfulResult;
 import util.AlloyLogGeneratorTemplate;
 import util.ConformanceCheckingTemplate;
+import theFirst.LogStreamer;
+import theFirst.MoBuConClient;
+import theFirst.ServerRunner;
 import util.GraphGenerator;
 import util.MinerfulTemplate;
 import util.ProcessModelGenerator;
@@ -114,6 +126,12 @@ public class TabbedMainViewController extends TabPane {
 	private Button discoverButton;
 	
 	@FXML
+	private AnchorPane actionPane5;// for Monitoring
+	
+	@FXML
+	private Button configureButton;
+	
+	@FXML
 	private Button generateButton;
 	
 	@FXML
@@ -136,6 +154,12 @@ public class TabbedMainViewController extends TabPane {
 	
 	@FXML
 	private ChoiceBox<String> logFileChoice;
+	
+	@FXML
+	private ChoiceBox<String> logMonitorChoice;
+	
+	@FXML
+	private ChoiceBox<String> modelMonitorChoice;
 	
 	@FXML
 	private ChoiceBox<String> declareModelChoice;
@@ -176,6 +200,34 @@ public class TabbedMainViewController extends TabPane {
 	
 	private ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 	
+	private String monitorModel = "";
+	
+	private ModelController mc;
+	
+	public MoBuConClient mob;
+	
+	private TabbedMonitorController tarc;
+
+	private boolean useBuiltIn;
+	
+	private int port;
+	
+	@FXML
+	private ToggleGroup toggleGroup = new ToggleGroup();
+	
+	@FXML
+	private CheckBox conflictCheck;
+	
+	@FXML
+	private RadioButton builtin;
+	
+	@FXML
+	private RadioButton external;
+	
+	@FXML 
+	private TextField portField;
+	
+	
 	public TabbedMainViewController(Stage stage) {
 		this.stage = stage;
 		this.openedFiles = new HashMap<String,String>();
@@ -184,6 +236,21 @@ public class TabbedMainViewController extends TabPane {
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
+            conflictCheck.setSelected(true);
+            builtin.setToggleGroup(toggleGroup);
+        	external.setToggleGroup(toggleGroup);
+        	toggleGroup.selectToggle(builtin);
+        	useBuiltIn = true;
+        	portField.setDisable(true);
+        	toggleGroup.selectedToggleProperty().addListener((observable, oldVal, newVal) -> {
+        		if (newVal == builtin) {
+        	    	portField.setDisable(true);
+        	    	useBuiltIn = true;
+        		}
+        		else{
+        	    	portField.setDisable(false);
+        	    	useBuiltIn = false;
+        		}});    
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -304,7 +371,109 @@ public class TabbedMainViewController extends TabPane {
 		editedModels.getItems().add(name);
 	}
 	
-	private String convertToXml(String filePath,boolean isSingleQuote) throws Exception {
+	// Here we open Log. 
+	@FXML
+	public void openLog() {
+		FileChooser fileChooser = new FileChooser();
+		ExtensionFilter filter = new ExtensionFilter("Log files",Arrays.asList("*.xes"));
+		fileChooser.getExtensionFilters().add(filter);
+		File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+        	openedFiles.put(file.getName(), file.getAbsolutePath());
+        	logMonitorChoice.getItems().add(file.getName());
+        	logMonitorChoice.getSelectionModel().select(file.getName());        	
+        }
+	}
+	
+	public XLog convertToXlog(String inputLogFileName) {
+		XesXmlParser parser = new XesXmlParser();
+		if(parser.canParse(new File(inputLogFileName))){
+			try {
+				XLog xlog = parser.parse(new File(inputLogFileName)).get(0);
+				return xlog;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	@FXML
+	public void openMonitorModel() {
+		FileChooser fileChooser = new FileChooser();
+		ExtensionFilter filter = new ExtensionFilter("Log files",Arrays.asList("*.decl"));
+		fileChooser.getExtensionFilters().add(filter);
+		File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+
+        	openedFiles.put(file.getName(), file.getAbsolutePath());
+        	modelMonitorChoice.getItems().add(file.getName());
+        	modelMonitorChoice.getSelectionModel().select(file.getName());
+        	monitorModel = readAllText(file);
+        	System.out.println(monitorModel);
+        	mc = new ModelController(monitorModel);
+        	//MonitoringController monc = new MonitoringController();
+        	mob = new MoBuConClient();
+    		tarc = new TabbedMonitorController(mc, mob, true);
+    		actionPane5.getChildren().clear();
+    		actionPane5.getChildren().add(tarc);
+    		AnchorPane.setLeftAnchor(tarc, 0.0);
+    		AnchorPane.setRightAnchor(tarc, 0.0);
+    		AnchorPane.setTopAnchor(tarc, 0.0);
+    		AnchorPane.setBottomAnchor(tarc, 0.0);
+        }      
+	}
+	@FXML
+	public void runMonitoring() throws Exception {
+		String model = modelMonitorChoice.getSelectionModel().getSelectedItem();// failinimed.
+		String logFile = logMonitorChoice.getSelectionModel().getSelectedItem();
+		if ((model == null || logFile == null) && useBuiltIn) {
+			showAlert("Model or log is missing!");
+		}
+		else {
+			if (!useBuiltIn) {
+	        	mob = new MoBuConClient();
+				port = Integer.parseInt(portField.getText());
+				mob.setPORT(port);
+				mc = new ModelController(monitorModel);
+				tarc = new TabbedMonitorController(mc, mob, false);
+				actionPane5.getChildren().clear();
+	    		actionPane5.getChildren().add(tarc);
+	    		AnchorPane.setLeftAnchor(tarc, 0.0);
+	    		AnchorPane.setRightAnchor(tarc, 0.0);
+	    		AnchorPane.setTopAnchor(tarc, 0.0);
+	    		AnchorPane.setBottomAnchor(tarc, 0.0);
+			}
+			ServerRunner sr = new ServerRunner("ServerRunner", conflictCheck.isSelected());
+			sr.start();
+			//MoBuConClient mobu = new MoBuConClient();
+			Thread.sleep(4500);
+			mob.runMoBuConClient();
+			if(useBuiltIn) {
+				String inputLogFilePath = openedFiles.get(logFile);
+				XLog log = convertToXlog(inputLogFilePath);
+				LogStreamer ls = new LogStreamer(monitorModel, log, 2000);
+				ls.start();
+				tarc.getTabPane().getSelectionModel().select(tarc.getMonitorTab());
+			}
+		}
+	}
+    public static String readAllText(File file) {
+        StringBuilder sb = new StringBuilder(2048);
+        try {
+            FileInputStream is = new FileInputStream(file);
+            Reader r = new InputStreamReader(is, "UTF-8");
+            int c;
+            while ((c = r.read()) != -1) {
+                sb.append((char) c);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return sb.toString();
+    }
+	
+    private String convertToXml(String filePath,boolean isSingleQuote) throws Exception {
 		if(filePath.endsWith(".decl")) {
 			Scanner sc = new Scanner(new File(filePath));
 			List<String> activityList = new ArrayList<String>();
