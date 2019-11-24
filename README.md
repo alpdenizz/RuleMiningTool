@@ -46,3 +46,11 @@ You should be able to open it as Java Project and run from `src/theFirst/RuM.jav
 
 ### Manual
 You can find a user manual in USER MANUAL.pdf
+
+#### Possible Future Works
+- Documenting the project with test automation.
+- Using Spring Framework and any build tool to have a better performance and more easily maintainable code.
+- Script to deploy (installer preparation).
+- Utilizing commonly used libraries by developers (Apache, Guava, ...) to have a better performance.
+- Reorganization of GUI to have a more concise, intuitive and UX.
+- Second iteration for usability test
