@@ -54,3 +54,4 @@ You can find a user manual in USER MANUAL.pdf
 - Utilizing commonly used libraries by developers (Apache, Guava, ...) to have a better performance.
 - Reorganization of GUI to have a more concise, intuitive and UX.
 - Second iteration for usability test
+- Apply Clean Code principle
